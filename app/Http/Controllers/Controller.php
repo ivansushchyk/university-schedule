@@ -19,7 +19,7 @@ class Controller extends BaseController
 
     public function show()
     {
-        function index($object)
+        function index($object)  // Знаходить потрібний індекс для масиву в залежності від номера пари і дня
         {
             $a = 1;
             if ($object['week'] == 'Н') {
@@ -40,16 +40,16 @@ class Controller extends BaseController
                     $a += 4;
                     break;
             }
-            $a = $a + ($object['pair_number']-1)*5;
+            $a = $a + ($object['pair_number'] - 1) * 5;
             return $a;
         }
 
         $lessons = Lesson::all();
         $pairs = [];
-        foreach ($lessons as $pair) {
+        foreach ($lessons as $pair) { // Перетворює на масив з потрібними індексами
             $pairs[index($pair)] = $pair;
         }
-        return view('index',compact('pairs'));
+        return view('index', compact('pairs'));
 
     }
 }

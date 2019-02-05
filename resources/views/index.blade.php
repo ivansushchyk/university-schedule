@@ -41,11 +41,11 @@
             ?>
 
             @foreach($arr as $key => $value)
-                <?php $a = ($key + 1) + ($key * 4); ?>
+                <?php $a = ($key + 1) + ($key * 4); ?> // Для того щоб пазначити потрібні індекси
                 <tr>
                     <th class="text-center"> {{ $key+1 }} пара <br> ({{ $value }})</th>
                     @for($i = 0;$i <= 4;$i++)
-                       @if(isset($pairs[$i+$a]))
+                       @if(isset($pairs[$i+$a])) // $a + $i - порядковий номер в рокладі для 1 цикла це 1,2,3,4,5
 
                         <th class="text-center"> {{$pairs[$i+$a]['type']}} - {{ $pairs[$i+$a]->subject->all()[0]['name'] }} <br>
                             {{ $pairs[$i+$a]->classroom->all()[0]['number'] }} -
