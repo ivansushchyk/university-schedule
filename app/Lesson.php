@@ -8,17 +8,17 @@ class Lesson extends Model
 {
     public function teacher()
     {
-        return $this->hasMany('App\Teacher','id');
+        return $this->belongsTo('App\Teacher','id');
     }
 
     public function classroom()
     {
-        return $this->hasMany('App\Classroom','id');
+        return $this->belongsTo('App\Classroom','id');
     }
 
     public function subject()
     {
-        return $this->hasMany('App\Subject','id');
+        return $this->belongsTo('App\Subject','id');
     }
 
 

@@ -19,37 +19,18 @@ class Controller extends BaseController
 
     public function show()
     {
-        function index($object)  // Знаходить потрібний індекс для масиву в залежності від номера пари і дня
-        {
-            $a = 1;
-            if ($object['week'] == 'Н') {
-                $a += 25;
-            }
-            switch ($object['day']) {
+    $lessons = Lesson::all()->groupBy('day')->map(function ($item) {
+        foreach ($item as $lesson){
+            $lesson = array($lesson->pair_number => $lesson);
+                    }
+        return $item;
+    });
 
-                case 'Вівторок':
-                    $a += 1;
-                    break;
-                case 'Середа':
-                    $a += 2;
-                    break;
-                case 'Четвер':
-                    $a += 3;
-                    break;
-                case 'Пятниця':
-                    $a += 4;
-                    break;
-            }
-            $a = $a + ($object['pair_number'] - 1) * 5;
-            return $a;
-        }
+    return view('index',compact('lessons'));
 
-        $lessons = Lesson::all();
-        $pairs = [];
-        foreach ($lessons as $pair) { // Перетворює на масив з потрібними індексами
-            $pairs[index($pair)] = $pair;
-        }
-        return view('index', compact('pairs'));
+
+
 
     }
 }
+
