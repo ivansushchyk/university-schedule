@@ -14,7 +14,7 @@
 <div class="container-fluid">
 
     <div id="header" align="center">
-        <img src="/1.jpg" align="middle" width="170" height="170" style="border-width:0px;" />
+        <img src="/1.jpg" align="middle" width="170" height="170" style="border-width:0px;"/>
         <h1>
             Розклад занять</h1>
         <hr>
@@ -25,38 +25,36 @@
         <table class="table table-bordered table-sm">
             <thead>
             <tr>
-                <th> </th>
+                <th></th>
                 <th class="text-center">Понеділок</th>
-                <th class="text-center"> Вівторок </th>
+                <th class="text-center"> Вівторок</th>
                 <th class="text-center"> Середа</th>
-                <th class="text-center"> Четвер </th>
-                <th class="text-center"> П'ятниця </th>
+                <th class="text-center"> Четвер</th>
+                <th class="text-center"> П'ятниця</th>
             </tr>
             </thead>
 
             <tbody>
 
             <?php
-            $arr = ['08.30-09.50', '10.00-11.45', '13.15-14.35', '14.40-16.00', '16.00-17.20'];
+            $pairs_time = ['08.30-09.50', '10.00-11.45', '13.15-14.35', '14.40-16.00', '16.00-17.20'];
+            $pairs_days = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'Пятниця'];
             ?>
 
-            @foreach($arr as $key => $value)
-                <?php $a = ($key + 1) + ($key * 4); ?> // Для того щоб пазначити потрібні індекси
+            @foreach($pairs_time as $key => $value)
                 <tr>
                     <th class="text-center"> {{ $key+1 }} пара <br> ({{ $value }})</th>
-                    @for($i = 0;$i <= 4;$i++)
-                       @if(isset($pairs[$i+$a])) // $a + $i - порядковий номер в рокладі для 1 цикла це 1,2,3,4,5
 
-                        <th class="text-center"> {{$pairs[$i+$a]['type']}} - {{ $pairs[$i+$a]->subject->all()[0]['name'] }} <br>
-                            {{ $pairs[$i+$a]->classroom->all()[0]['number'] }} -
-                            {{ $pairs[$i+$a]->teacher->all()[0]['rank'] }}.{{ $pairs[$i+$a]->teacher->all()[0]['name'] }} </th>
+                    @for($i = 0;$i <= 4;$i++)
+                        @if($lessons[$pairs_days[$key]][$i])
+                            <th class="text-center"><br> 2
+                            </th>
                         @else
-                            <th   class="text-center"> </th>
+                            <th class="text-center"></th>
                         @endif
                     @endfor
                 </tr>
             @endforeach
-
 
 
             </tbody>

@@ -9,3 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+
+ $lesson = array($lesson->pair_number => array($lesson->teacher->name, $lesson->classroom->number, $lesson->teacher->rank, $lesson->subject->name, $lesson->type));
