@@ -20,12 +20,12 @@ class Controller extends BaseController
     public function show()
     {
     $lessons = Lesson::all()->groupBy('day_number')->map(function ($item) {
-        foreach ($item as $lesson){
-            $lesson = array($lesson->pair_number => $lesson );
-                    }
-        return $item;
-    });
 
+        foreach ($item as $lesson){
+            $newitem[$lesson->pair_number] = $lesson;
+                    }
+        return $newitem;
+    });
     return view('index',compact('lessons'));
 
 

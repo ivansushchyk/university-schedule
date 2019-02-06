@@ -44,9 +44,11 @@
                 <tr>
                     <th class="text-center"> {{ $key+1 }} пара <br> ({{ $value }})</th>
 
-                    @for($i = 0;$i <= 4;$i++)
-                        @if(isset($lessons[$i+1][$key]))
-                            <th class="text-center"><br>{{ $i+1 }} {{ $key }}
+                    @for($i = 1;$i <= 5;$i++)
+                        @if(isset($lessons[$i][$key+1]))
+
+                            <th class="text-center"> {{$lessons[$i][$key+1]->type }} - {{$lessons[$i][$key+1]->subject['name']}}<br>
+                               {{$lessons[$i][$key+1]->classroom['number']}} - {{$lessons[$i][$key+1]->teacher['rank']}}.{{$lessons[$i][$key+1]->teacher['name']}}
                             </th>
                         @else
                             <th class="text-center">none </th>
