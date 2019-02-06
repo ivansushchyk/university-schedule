@@ -38,7 +38,6 @@
 
             <?php
             $pairs_time = ['08.30-09.50', '10.00-11.45', '13.15-14.35', '14.40-16.00', '16.00-17.20'];
-            $pairs_days = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'Пятниця'];
             ?>
 
             @foreach($pairs_time as $key => $value)
@@ -46,11 +45,11 @@
                     <th class="text-center"> {{ $key+1 }} пара <br> ({{ $value }})</th>
 
                     @for($i = 0;$i <= 4;$i++)
-                        @if($lessons[$pairs_days[$key]][$i])
-                            <th class="text-center"><br> 2
+                        @if(isset($lessons[$i+1][$key]))
+                            <th class="text-center"><br>{{ $i+1 }} {{ $key }}
                             </th>
                         @else
-                            <th class="text-center"></th>
+                            <th class="text-center">none </th>
                         @endif
                     @endfor
                 </tr>

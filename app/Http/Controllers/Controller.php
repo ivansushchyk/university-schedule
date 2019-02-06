@@ -19,9 +19,9 @@ class Controller extends BaseController
 
     public function show()
     {
-    $lessons = Lesson::all()->groupBy('day')->map(function ($item) {
+    $lessons = Lesson::all()->groupBy('day_number')->map(function ($item) {
         foreach ($item as $lesson){
-            $lesson = array($lesson->pair_number => $lesson);
+            $lesson = array($lesson->pair_number => $lesson );
                     }
         return $item;
     });
