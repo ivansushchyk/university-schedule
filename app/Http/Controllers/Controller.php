@@ -26,6 +26,7 @@ class Controller extends BaseController
                     }
         return $newitem;
     });
+        dd($lessons);
     return view('index',compact('lessons'));
 
 
