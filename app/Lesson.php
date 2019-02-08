@@ -8,17 +8,17 @@ class Lesson extends Model
 {
     public function teacher()
     {
-        return $this->belongsTo('App\Teacher','id');
+        return $this->belongsTo('App\Teacher','teacher_id');
     }
 
     public function classroom()
     {
-        return $this->belongsTo('App\Classroom','id');
+        return $this->belongsTo('App\Classroom','room_id');
     }
 
     public function subject()
     {
-        return $this->belongsTo('App\Subject','id');
+        return $this->belongsTo('App\Subject','subj_id');
     }
 
 

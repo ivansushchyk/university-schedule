@@ -27,10 +27,13 @@ class Controller extends BaseController
         return $newitem;
     });
 
+
+
+
     return view('index',compact('lessons'));
 
 
-dd($lessons);
+
 
     }
 }
