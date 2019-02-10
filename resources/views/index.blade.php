@@ -1,68 +1,49 @@
-<!DOCTYPE>
-<html>
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+@extends('photoTemplate')
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@section('content')
+    <div class="container-fluid">
+        <div>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="container-fluid">
-
-    <div id="header" align="center">
-        <img src="/1.jpg" align="middle" width="170" height="170" style="border-width:0px;"/>
-        <h1>
-            Розклад занять</h1>
-        <hr>
-    </div>
-    <div>
-
-        <h2 class="text-center"> Верхній тиждень </h2>
-        <table class="table table-bordered table-sm">
-            <thead>
-            <tr>
-                <th></th>
-                <th class="text-center">Понеділок</th>
-                <th class="text-center"> Вівторок</th>
-                <th class="text-center"> Середа</th>
-                <th class="text-center"> Четвер</th>
-                <th class="text-center"> П'ятниця</th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <?php
-            $pairs_time = ['08.30-09.50', '10.00-11.45', '13.15-14.35', '14.40-16.00', '16.00-17.20'];
-            ?>
-
-            @foreach($pairs_time as $key => $value)
+            <h2 class="text-center"> Верхній тиждень </h2>
+            <table class="table table-bordered table-sm">
+                <thead>
                 <tr>
-                    <th class="text-center"> {{ $key+1 }} пара <br> ({{ $value }})</th>
-
-                    @for($i = 1;$i <= 5;$i++)
-                        @if(isset($lessons[$i][$key+1]))
-
-                            <th class="text-center"> {{$lessons[$i][$key+1]->type }} - {{$lessons[$i][$key+1]->subject['name']}}<br>
-                               {{$lessons[$i][$key+1]->classroom['number']}} - {{$lessons[$i][$key+1]->teacher['rank']}}.{{$lessons[$i][$key+1]->teacher['name']}}
-                            </th>
-                        @else
-                            <th class="text-center">none </th>
-                        @endif
-                    @endfor
+                    <th></th>
+                    <th class="text-center">Понеділок</th>
+                    <th class="text-center"> Вівторок</th>
+                    <th class="text-center"> Середа</th>
+                    <th class="text-center"> Четвер</th>
+                    <th class="text-center"> П'ятниця</th>
                 </tr>
-            @endforeach
+                </thead>
 
+                <tbody>
 
-            </tbody>
-        </table>
+                <?php
+                $pairs_time = ['08.30-09.50', '10.00-11.45', '13.15-14.35', '14.40-16.00', '16.00-17.20'];
+                ?>
 
-        <hr>
+                @foreach($pairs_time as $key => $value)
+                    <tr>
+                        <th class="text-center"> {{ $key+1 }} пара <br> ({{ $value }})</th>
 
-</body>
-</html>
+                        @for($i = 1;$i <= 5;$i++)
+                            @if(isset($lessons[$i][$key+1]))
+
+                                <th class="text-center"> {{$lessons[$i][$key+1]->type }}
+                                    - {{$lessons[$i][$key+1]->subject['name']}}<br>
+                                    {{$lessons[$i][$key+1]->classroom['number']}}
+                                    - {{$lessons[$i][$key+1]->teacher['rank']}}
+                                    .{{$lessons[$i][$key+1]->teacher['name']}}
+                                </th>
+                            @else
+                                <th class="text-center">none</th>
+                            @endif
+                        @endfor
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+@stop
 

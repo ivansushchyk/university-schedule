@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SelectGroupRequest;
 use App\Teacher;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -17,9 +18,9 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function show()
+    public function show(SelectGroupRequest $request)
     {
-    $lessons = Lesson::all()->groupBy('day_number')->map(function ($item) {
+    $lessons = Lesson::all()->where('group',$_POST['number'])->groupBy('day_number')->map(function ($item) {
 
         foreach ($item as $lesson){
             $newitem[$lesson->pair_number] = $lesson;
@@ -35,6 +36,17 @@ class Controller extends BaseController
 
 
 
+    }
+
+
+    public function showLecturerSchedule()
+    {
+        return view('LecturerSchedule');
+    }
+
+    public function showGroupSchedule()
+    {
+        return view('GroupSchedule');
     }
 }
 

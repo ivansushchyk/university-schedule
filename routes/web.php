@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/', 'Controller@show');
+Route::get('/', 'Controller@showLecturerSchedule');
+Route::get('/LetcurerSchedule', 'Controller@showLecturerSchedule');
+Route::get('/GroupSchedule', 'Controller@showGroupSchedule');
+Route::post('/index', 'Controller@show');
