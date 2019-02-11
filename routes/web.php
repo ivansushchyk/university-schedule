@@ -8,10 +8,10 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', 'Controller@showLecturerSchedule');
-Route::get('/LetcurerSchedule', 'Controller@showLecturerSchedule');
-Route::get('/GroupSchedule', 'Controller@showGroupSchedule');
-Route::post('/index', 'Controller@show');
+*/
+Route::get('/', 'Controller@CategoryByGroup');
+Route::get('/ScheduleLecturerSelection', 'Controller@showScheduleLecturerSelection');
+Route::get('/ScheduleGroupSelection', 'Controller@showScheduleGroupSelection');
+Route::get('/LecturerSchedule', 'Controller@CategoryByLecturer');
+Route::get('/GroupSchedule', 'Controller@CategoryByGroup');

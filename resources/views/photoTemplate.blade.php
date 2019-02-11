@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <title>Розклад занять</title>
@@ -13,14 +12,13 @@
 </head>
 
 <body>
-@section('sidebar')
-    <div id="header" align="center">
-        <img src="/1.jpg" align="middle" width="170" height="170" style="border-width:0px;"/>
-        <h1>
-            Розклад занять</h1>
-        <hr>
-    </div>
-@show
+
+
+<div id="header" align="center">
+    <img src="/1.jpg" align="middle" width="170" height="170" style="border-width:0px;"/>
+</div>
+
+
 
 <div class="container-fluid">
     @yield('content')

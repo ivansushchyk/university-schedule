@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest,Illuminate\Contracts\Validation\Validator;
 
 class SelectGroupRequest extends FormRequest
 {
@@ -24,7 +24,21 @@ class SelectGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'exists:lessons,group'
+            'number' => 'exists:lessons,group'
         ];
     }
+    protected function formatErrors(Validator $validator)
+    {
+        return $validator->errors()->all();
+    }
+
+    public function messages()
+    {
+        return [
+            'number.exists:lessons,group' => 'Такої групи немає',
+        ];
+    }
+
+
+
 }
