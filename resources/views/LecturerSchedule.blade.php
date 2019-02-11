@@ -15,6 +15,9 @@
         <form action="/ScheduleLecturerSelection" method="get">
             <input name="name" style="width: 16%" placeholder="Введіть П.І.Б. викладача (напр. Пугач І.О.)"> <br>
             <br>
+            @foreach ($errors->all() as $error)
+                <li class="alert alert-info"> Введіть коректний П.І.Б. </li>
+            @endforeach
             <button type="submit" class="btn btn-primary mb-2 text-center"> Показати розклад</button>
         </form>
     </div>

@@ -15,7 +15,7 @@
             <input name="number" style="width: 10%" placeholder="Введіть номер групи"> <br>
             <br>
             @foreach ($errors->all() as $error)
-                <li class="alert alert-info">{{ $error }}</li>
+                <li class="alert alert-info"> Введіть коректний номер групи </li>
             @endforeach
             <button type="submit" class="btn btn-primary mb-2 text-center"> Показати розклад</button>
         </form>

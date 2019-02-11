@@ -27,17 +27,7 @@ class SelectGroupRequest extends FormRequest
             'number' => 'exists:lessons,group'
         ];
     }
-    protected function formatErrors(Validator $validator)
-    {
-        return $validator->errors()->all();
-    }
-
-    public function messages()
-    {
-        return [
-            'number.exists:lessons,group' => 'Такої групи немає',
-        ];
-    }
+   
 
 
 
