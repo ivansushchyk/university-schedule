@@ -32,7 +32,7 @@ class Controller extends BaseController
         if ($group->IsEmpty())
             return Redirect::back()->withErrors(['Такої групи немає']);
         else
-            return Redirect::to(route('showGr', $group[0]->slug), 301);
+            return Redirect::to(route('showByGroup', $group[0]->slug), 301);
     }
 
     public function LecturerValidation()
@@ -45,7 +45,7 @@ class Controller extends BaseController
         if ($teacher->IsEmpty())
             return Redirect::back()->withErrors(['Такого викладача немає']);
         else
-            return Redirect::to(route('showLC',  $teacher[0]->slug), 301);
+            return Redirect::to(route('showByLecturer',  $teacher[0]->slug), 301);
 
     }
 

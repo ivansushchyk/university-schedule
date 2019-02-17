@@ -15,8 +15,8 @@ Route::post('profile/{id}', function () {
 
     return  1;
 });
-Route::get('/ScheduleGroupSelection/{slug}', 'Controller@showGroupShedule')->name('showGr');
-Route::get('/ScheduleLecturerSelection/{slug}', 'Controller@showLecturerShedule')->name('showLC');
+Route::get('/ScheduleGroupSelection/{slug}', 'Controller@showGroupShedule')->name('showByGroup');
+Route::get('/ScheduleLecturerSelection/{slug}', 'Controller@showLecturerShedule')->name('showByLecturer');
 Route::get('/', 'Controller@CategoryByGroup');
 Route::post('/ScheduleLecturerSelection', 'Controller@LecturerValidation');
 Route::post('/ScheduleGroupSelection', 'Controller@GroupValidation');
