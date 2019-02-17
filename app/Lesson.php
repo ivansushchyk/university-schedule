@@ -21,6 +21,11 @@ class Lesson extends Model
         return $this->belongsTo('App\Subject','subj_id');
     }
 
+    public function group()
+    {
+        return $this->belongsTo('App\Group','group_id');
+    }
+
 
 
 

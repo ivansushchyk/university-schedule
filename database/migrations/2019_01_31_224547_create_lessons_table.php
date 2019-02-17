@@ -24,7 +24,8 @@ class CreateLessonsTable extends Migration
             $table->integer('pair_number')->unsigned();
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('classrooms');
-            $table->integer('group')->unsigned();
+            $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->string('type');
             $table->timestamps();
 

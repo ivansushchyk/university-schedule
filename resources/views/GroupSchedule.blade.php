@@ -11,11 +11,12 @@
 
 
     <div style="text-align:center;margin: 30px">
-        <form action="/ScheduleGroupSelection">
-            <input name="number" style="width: 10%" placeholder="Введіть номер групи"> <br>
+        <form action="/ScheduleGroupSelection" METHOD="post">
+            @csrf
+            <input name="group_name" style="width: 10%" placeholder="Введіть номер групи"> <br>
             <br>
             @foreach ($errors->all() as $error)
-                <li class="alert alert-info"> Введіть коректний номер групи </li>
+                <li class="alert alert-info"> {{ $error }} </li>
             @endforeach
             <button type="submit" class="btn btn-primary mb-2 text-center"> Показати розклад</button>
         </form>

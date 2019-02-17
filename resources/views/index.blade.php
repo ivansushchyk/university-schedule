@@ -1,6 +1,5 @@
 @extends('photoTemplate')
 
-
 <?php
 $pairs_time = ['08.30-09.50', '10.00-11.45', '13.15-14.35', '14.40-16.00', '16.00-17.20'];
 
@@ -13,9 +12,9 @@ else
 @section('content')
     <div style="text-align:center">
         <h1> Розклад занять для @if($isGroupSelection)
-                {{ $_GET['number'] }} групи
+            {{ current($lessons->first())->group->name }} групи
             @else
-                {{ $_GET['name'] }}
+                {{ current($lessons->first())->teacher->name }}
             @endif
         </h1>
         <hr>
@@ -57,7 +56,7 @@ else
                                     <th class="text-center"> {{$lessons[$i][$key+1]->type }}
                                         - {{$lessons[$i][$key+1]->subject['name']}}<br>
                                         {{$lessons[$i][$key+1]->classroom['number']}}
-                                        - {{$lessons[$i][$key+1]->group }} Група
+                                        - {{$lessons[$i][$key+1]->group['name'] }} Група
 
                                     </th>
                                 @endif
