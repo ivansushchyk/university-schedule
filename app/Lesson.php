@@ -30,3 +30,15 @@ class Lesson extends Model
 
 
 }
+////node_modules
+///public/hot
+///public/storage
+///storage/*.key
+///vendor
+//.env
+//.phpunit.result.cache
+//Homestead.json
+//Homestead.yaml
+//npm-debug.log
+//yarn-error.log
+//.idea
