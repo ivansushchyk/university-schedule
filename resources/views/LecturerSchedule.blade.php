@@ -17,11 +17,26 @@
             @csrf
             <br>
             @foreach ($errors->all() as $error)
-                <li class="alert alert-info"> {{ $error }} </li>
+                <li id="errorAlert" class="alert alert-info"> {{ $error }} </li>
             @endforeach
             <button type="submit" class="btn btn-primary mb-2 text-center"> Показати розклад</button>
         </form>
     </div>
+
+    <script>
+
+        if(document.getElementById('errorAlert')){
+            function hideAlert() {
+                var div = document.getElementById('errorAlert');
+                div.hidden = true;
+            }
+            setTimeout(hideAlert,1500);
+
+        }
+
+    </script>
+
+
 
 
 

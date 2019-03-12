@@ -10,19 +10,32 @@
     </div>
 
 
-    <div style="text-align:center;margin: 30px">
+    <div id="bottom" style="text-align:center;margin: 30px">
         <form action="/ScheduleGroupSelection" METHOD="post">
             @csrf
-            <input name="group_name" style="width: 10%" placeholder="Введіть номер групи"> <br>
+            <input name="group_name" style="width: 11%" placeholder="Введіть номер групи"> <br>
             <br>
             @foreach ($errors->all() as $error)
-                <li class="alert alert-info"> {{ $error }} </li>
+                <div>
+                <li id='errorAlert' class="alert alert-info"> {{ $error }} </li>
+                </div>
             @endforeach
             <button type="submit" class="btn btn-primary mb-2 text-center"> Показати розклад</button>
         </form>
     </div>
 
+<script>
 
+if(document.getElementById('errorAlert')){
+    function hideAlert() {
+        var div = document.getElementById('errorAlert');
+        div.hidden = true;
+    }
+    setTimeout(hideAlert,1500);
+
+}
+
+</script>
 
 
 

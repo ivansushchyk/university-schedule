@@ -57,13 +57,21 @@ class Controller extends BaseController
         if ($group->isEmpty())
             abort(404);
         else
-            $lessons = Lesson::all()->where('group_id', '=', $group[0]->id)->groupBy('day_number')->map(function ($item) {
+            $lessonsTopWeek = Lesson::all()->where('group_id', '=', $group[0]->id)->where('week','=','В')->groupBy('day_number')->map(function ($item) {
                 foreach ($item as $lesson) {
                     $newitem[$lesson->pair_number] = $lesson;
                 }
                 return $newitem;
             });
-        $lessons_array = [1 => $lessons];
+
+        $lessonsBottomWeek = Lesson::all()->where('group_id', '=', $group[0]->id)->where('week','=','Н')->groupBy('day_number')->map(function ($item) {
+            foreach ($item as $lesson) {
+                $newitem[$lesson->pair_number] = $lesson;
+            }
+            return $newitem;
+        });
+
+        $lessons_array = [1 => $lessonsTopWeek , 2 => $lessonsBottomWeek];
         return view('index', ['lessons_array' => $lessons_array]);
 
     }
@@ -74,13 +82,22 @@ class Controller extends BaseController
         if ($teacher->isEmpty())
             abort(404);
         else
-            $lessons = Lesson::all()->where('teacher_id', '=', $teacher[0]->id)->groupBy('day_number')->map(function ($item) {
+            $lessonsTopWeek = Lesson::all()->where('teacher_id', '=', $teacher[0]->id)->groupBy('day_number')->map(function ($item) {
                 foreach ($item as $lesson) {
                     $newitem[$lesson->pair_number] = $lesson;
                 }
                 return $newitem;
             });
-        $lessons_array = [0 => $lessons];
+
+        $lessonsBottomWeek = Lesson::all()->where('teacher_id', '=', $teacher[0]->id)->groupBy('day_number')->map(function ($item) {
+            foreach ($item as $lesson) {
+                $newitem[$lesson->pair_number] = $lesson;
+            }
+            return $newitem;
+        });
+
+
+        $lessons_array = [0 => $lessonsTopWeek , 2 => $lessonsBottomWeek];
         return view('index', ['lessons_array' => $lessons_array]);
     }
 
