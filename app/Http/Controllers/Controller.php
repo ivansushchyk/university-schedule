@@ -57,14 +57,14 @@ class Controller extends BaseController
         if ($group->isEmpty())
             abort(404);
         else
-            $lessonsTopWeek = Lesson::all()->where('group_id', '=', $group[0]->id)->where('week','=','В')->groupBy('day_number')->map(function ($item) {
+            $lessonsTopWeek = Lesson::all()->where('group_id', '=', $group[0]->id)->where('week','=',2)->groupBy('day_number')->map(function ($item) {
                 foreach ($item as $lesson) {
                     $newitem[$lesson->pair_number] = $lesson;
                 }
                 return $newitem;
             });
 
-        $lessonsBottomWeek = Lesson::all()->where('group_id', '=', $group[0]->id)->where('week','=','Н')->groupBy('day_number')->map(function ($item) {
+        $lessonsBottomWeek = Lesson::all()->where('group_id', '=', $group[0]->id)->where('week','=',1)->groupBy('day_number')->map(function ($item) {
             foreach ($item as $lesson) {
                 $newitem[$lesson->pair_number] = $lesson;
             }

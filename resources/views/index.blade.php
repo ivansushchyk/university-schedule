@@ -75,9 +75,9 @@ if ($isGroupSelection = isset($lessons_array[1])) {
             </table>
 
 
-            <h2 class="text-center"> Нижній тиждень </h2>
+            <h2 style="margin-top: 100px" class="text-center"> Нижній тиждень </h2>
 
-            <table class="table table-bordered table-sm">
+            <table id="bottomWeek" class="table table-bordered table-sm">
                 <thead>
                 <tr>
                     <th></th>
@@ -126,15 +126,38 @@ if ($isGroupSelection = isset($lessons_array[1])) {
             </table>
 
             <script>
-                var now = new Date();
-                today = now.getDay() + 1;
-                var table = document.getElementById('topWeek');
-                var a = 2;
-                for (var i = 1; i < 6; i++) {
-                    if (table.rows[i].cells[2].innerHTML)
-                        table.rows[i].cells[2].style.backgroundColor = '#FAEBD7';
+                const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+                function dateDiffInDays(a, b) {// Discard the time and time-zone information.
+                    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+                    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+                    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
                 }
 
+                var startStudying = new Date("2019-02-11"),  //
+                    now = new Date(),
+                    difference = dateDiffInDays(startStudying, now);
+
+                var isNowBottomWeek = false;
+                if (difference % 14 <= 6 ) {
+                     isNowBottomWeek = true;
+                }
+                showDay = now.getDay();
+                if(now.getDay() == 6 || now.getDay() == 0){
+                   isNowBottomWeek = !isNowBottomWeek;
+                   showDay = 1;
+                }
+
+                if(isNowBottomWeek){
+                    table = document.getElementById('bottomWeek')
+                }
+                else {
+                    table = document.getElementById('topWeek')
+                }
+                         for (var i = 1; i < 6; i++) {
+                            if (table.rows[i].cells[showDay].innerHTML)
+                                 table.rows[i].cells[showDay].style.backgroundColor = '#FAEBD7';
+                         }
 
             </script>
 

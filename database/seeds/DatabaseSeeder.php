@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('lessons')->insert([
             'subj_id' => rand(1, 5),
-            'week' => 'В',
+            'week' => rand(1,2),
             'day_number' => rand(1, 5),
             'pair_number' => rand(1, 5),
             'room_id' => rand(1, 5),
